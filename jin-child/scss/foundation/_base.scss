@@ -1,0 +1,26 @@
+@use 'font' as font;
+@use 'color' as color;
+@use 'mixin' as mixin;
+
+html {
+  body {
+    font-family: font.$font-base;
+    background-color: color.$beige;
+    color: color.$black;
+    @include mixin.mq(md, max) {
+      font-size: 14.5px;
+    }
+    @include mixin.mq(lg) {
+      transition: .5s ease;
+    }
+    &.is-inverted {
+      background-color: color.$black;
+    }
+    &:not(.is-inverted) {
+      background-color: color.$beige;
+    }
+    .mid-content {
+      @include mixin.content-width;
+    }
+  }
+}

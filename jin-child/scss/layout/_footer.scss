@@ -1,0 +1,84 @@
+@use '../foundation/index' as f;
+@use 'sass:math';
+
+.footer {
+  padding: 100px 0;
+  @include f.mq(md) {
+    padding: 160px 0;
+  }
+  &__inner {
+    @include f.mq(md) {
+      display: grid;
+      justify-content: space-between;
+      grid-template: 'profile sns' auto
+        'copyright sns' 1fr /
+        #{1fr 2fr};
+    }
+    .profile {
+      @include f.mq(md, max) {
+        margin: 0 0 80px;
+      }
+      @include f.mq(md) {
+        grid-area: profile;
+      }
+      &__logo {
+        width: min(120px, 25vw);
+        margin: 0 0 60px;
+        @include f.mq(md) {
+          margin: 0 0 80px;
+        }
+      }
+      &__detail {
+        display: flex;
+        grid-auto-flow: 2.5em;
+        flex-wrap: wrap;
+        align-items: baseline;
+        dt {
+          width: 110px;
+          margin: 0 0 2em;
+        }
+        dd {
+          width: calc(100% - 110px);
+          margin: 0 0 2em;
+        }
+      }
+    }
+    .sns {
+      @include f.mq(md) {
+        grid-area: sns;
+      }
+      &__tw {
+        margin: 0 0 80px;
+        @include f.mq(md) {
+          display: flex;
+          justify-content: space-between;
+        }
+        .sns__detail {
+          @include f.mq(md) {
+            width: percentage(math.div(2, 3));
+          }
+
+        }
+      }
+      &__ig {
+        @include f.mq(md, max) {
+          margin: 0 0 80px;
+        }
+      }
+      &__heading {
+        font-family: f.$font-roboto;
+        color: f.$green;
+        font-size: f.rem(32px);
+        line-height: 1;
+        margin: 0 0 1em;
+      }
+      &__detail {}
+    }
+    .copyright {
+      @include f.mq(md) {
+        grid-area: copyright;
+        align-self: self-end;
+      }
+    }
+  }
+}
